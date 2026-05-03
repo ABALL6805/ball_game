@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Dino game project/Dino game project.vcxproj" Id="7adacb15-dcf2-4bb7-9763-434d719db68f" />
+</Solution>
