@@ -13,7 +13,8 @@ void GameState::runGame(Player player, Obstacle obstacle, Obstacle randObstacle)
 	// Reset score clock so time spent in menu isn't counted towards score
 	scoreClock.restart();
 	// Initialise restart button and name text field
-	Button restart(sf::Vector2f(150.f, 50.f), "RESTART", sf::Vector2f(950.f, 750.f));
+	Button restart(sf::Vector2f(150.f, 50.f), "RESTART", sf::Vector2f(800.f, 750.f));
+	Button menu(sf::Vector2f(85.f, 50.f), "MENU", sf::Vector2f(1125.f, 750.f));
 	TextField name(sf::Vector2f(700.f, 60.f), "Name: ", sf::Vector2f(700.f, 600.f));
 	// Create and initialise leaderboard vector
 	ScoreStore leaderboard;
@@ -95,12 +96,21 @@ void GameState::runGame(Player player, Obstacle obstacle, Obstacle randObstacle)
 			scoreText.setString("Score: " + dtString);
 			// Resets game score, obstacles, and name text field and moves back to Game Screen
 			restart.draw(window);
+			menu.draw(window);
 			if (restart.mouseClick(window)) {
 				obstacle.forceResetObstacle();
 				randObstacle.forceResetObstacle();
 				scoreClock.restart();
 				name.resetInput();
 				gameOver = false;
+			}
+			if (menu.mouseClick(window)) {
+				obstacle.forceResetObstacle();
+				randObstacle.forceResetObstacle();
+				scoreClock.restart();
+				name.resetInput();
+				gameOver = false;
+				return;
 			}
 			name.draw(window);
 			window.draw(scoreText);
@@ -114,6 +124,7 @@ void GameState::runGame(Player player, Obstacle obstacle, Obstacle randObstacle)
 			scoreText.setPosition(sf::Vector2f(800.f, 400.f));
 			window.clear();
 			restart.draw(window);
+			menu.draw(window);
 			window.draw(scoreText);
 			if (restart.mouseClick(window)) {
 				scoreText.setPosition(sf::Vector2f(950.f, 400.f));
@@ -123,6 +134,16 @@ void GameState::runGame(Player player, Obstacle obstacle, Obstacle randObstacle)
 				name.resetInput();
 				gameOver = false;
 				saveScreen = false;
+			}
+			if (menu.mouseClick(window)) {
+				scoreText.setPosition(sf::Vector2f(950.f, 400.f));
+				obstacle.forceResetObstacle();
+				randObstacle.forceResetObstacle();
+				scoreClock.restart();
+				name.resetInput();
+				gameOver = false;
+				saveScreen = false;
+				return;
 			}
 			window.display();
 		}

@@ -12,7 +12,9 @@ void main() {
 	Player player;
 	Obstacle obstacle;
 	Obstacle randObstacle(600.f, -100.f, -1.3f);
-
-	menu.renderMenu();
-	game.runGame(player, obstacle, randObstacle);
+	
+	while (true) {
+		menu.renderMenu();
+		game.runGame(player, obstacle, randObstacle);
+	}
 }
