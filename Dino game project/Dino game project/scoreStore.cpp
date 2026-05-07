@@ -44,6 +44,7 @@ void ScoreStore::scoreFileWrite() {
 	for (Score scoreTemp : leaderboard) {
 		scoreFile << scoreTemp.getName() << "," << scoreTemp.getScore() << "\n";
 	}
+	scoreFile.close();
 }
 
 std::vector<Score> ScoreStore::getLeaderboard() {
